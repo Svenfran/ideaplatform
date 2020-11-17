@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xs-12 col-sm-4">
+      <div class="form-login">
+        <%= simple_form_for([@idea_problem]) do |f| %>
+        <%= f.input :title, autocomplete: :off, label: "Title" %>
+        <%= f.input :description_long, label: "Description" %>
+        <%= f.input :type_idea , label: "Idea" %>
+        <%= f.input :type_problem, label: "Problem" %>
+        <%= f.association :category %>
+        <%= f.submit class: 'btn btn-primary mb-3'%>
+
+        <% end %>
+        <%= link_to "Back", idea_problems_path, class: 'back'%>
+
+      </div>
+    </div>
+  </div>
+</div>
