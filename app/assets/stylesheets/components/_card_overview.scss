@@ -1,0 +1,28 @@
+.card-body {
+    margin: 0 0 12px 0;
+    background: white;
+    border-radius: 4px;
+    padding: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    width: 500px;
+    h5 {
+        font-size: 14px;
+        font-weight: bold;
+    }
+    p {
+        font-size: small;
+    }
+}
+
+.symbol {
+    display: flex;
+    justify-content: right;
+}
+
+.date {
+    display: flex;
+    justify-content: right;
+    p {
+        color: lightslategray;
+    }
+}

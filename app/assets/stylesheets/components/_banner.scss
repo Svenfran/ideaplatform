@@ -4,11 +4,11 @@
     background-position: center;
     height: 100vh;
     padding: 250px 200px;
+    h1, p {
+        color: white;
+    }
 }
 
-.banner h1, p {
-    color: white;
-}
 
 .btn-ghost {
     color: white;
