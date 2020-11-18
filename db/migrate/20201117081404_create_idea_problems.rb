@@ -4,7 +4,6 @@ class CreateIdeaProblems < ActiveRecord::Migration[6.0]
       t.string :title
       t.text :description_long
       t.boolean :type_idea
-      t.boolean :type_problem
       t.references :user, null: false, foreign_key: true
       t.references :category, null: false, foreign_key: true
 

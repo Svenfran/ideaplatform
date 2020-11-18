@@ -44,7 +44,6 @@ ActiveRecord::Schema.define(version: 2020_11_17_082300) do
     t.string "title"
     t.text "description_long"
     t.boolean "type_idea"
-    t.boolean "type_problem"
     t.bigint "user_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false

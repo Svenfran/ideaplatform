@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :idea_problems do
     resources :attachments
   end
-  resources :attachments, only: [:destroy]
   resources :categories
+  resources :attachments, only: [:destroy]
 
 end

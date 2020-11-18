@@ -7,8 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Category.destroy_all
+IdeaProblem.destroy_all
 
-categories = ["E-Mobility", "Healthcare", "Automotive", "Computerscience", "Environment"]
+categories = ["E-Mobility", "Healthcare", "Automotive", "Computerscience", "Environment", "Ecommerce"]
 
 categories.each do |c|
     category = Category.create(name: c)
