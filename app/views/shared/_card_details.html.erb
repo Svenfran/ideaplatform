@@ -1,0 +1,20 @@
+<div class="card-details-body">
+    <h5>Titel:</h5>
+    <p><strong><%= @idea_problem.title %></strong></p>
+    <div class="categories">
+        <p><%= @idea_problem.category.name %></p>
+    </div>
+    <h5>Beschreibung:</h5>
+    <p><%= @idea_problem.description_long %></p>
+    <h5>Anhänge:</h5>
+    <div class="attachments">
+        <p><%= "Anhang" %></p>
+    </div>
+    <div class="info">
+        <p>Ersteller: <%= current_user.email.split("@")[0] %></p>
+        <p>Ersteller kontaktieren</p>
+        <p>Erstelldatum: <%= @idea_problem.created_at.strftime("%d.%m.%Y") %></p>
+    </div>
+    <p style="color:lightslategray"><em>Privatperson</em></p>
+    <p><%= link_to "<< BACK", idea_problems_path %></p>
+<div>

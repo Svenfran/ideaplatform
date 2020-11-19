@@ -1,5 +1,5 @@
 class IdeaProblemsController < ApplicationController
-    # before_action :set_idea_problem, only: %i[show update destroy]
+    before_action :set_idea_problem, only: %i[show update destroy]
 
     def index
         @idea_problems = IdeaProblem.all
@@ -10,6 +10,8 @@ class IdeaProblemsController < ApplicationController
         @idea_problem = IdeaProblem.new
         # authorize @idea_problem
     end
+
+    def show; end
     
     def create
         @idea_problem = IdeaProblem.new(idea_problem_params)

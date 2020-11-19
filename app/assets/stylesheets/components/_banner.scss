@@ -21,7 +21,13 @@
   }
 
 .btn-ghost:hover {
-opacity: 1;
-color: white;
-background: rgba($color: white, $alpha: .3);
+    opacity: 1;
+    color: white;
+    background: rgba($color: white, $alpha: .3);
+}
+
+.btn-wrapper {
+    width: 450px;
+    display: flex;
+    justify-content: space-between;
 }

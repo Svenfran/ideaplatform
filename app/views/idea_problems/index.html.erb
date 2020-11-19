@@ -1,42 +1,33 @@
 <div class="pt-5"></div>
 <div class="container pt-5">
-    <% @idea_problems.each do |item| %>
-        <div class="row">
+    <div class="wrapper">
+        <div class="col">
+        <% @idea_problems.each do |item| %>
             <% if item.type_idea == true %>
-                <div class="col">
-                <%= link_to idea_problem_path(item) do %>
-                    <div class="card-body">
-                        <div class="symbol">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <h5>Titel:</h5>
-                        <p><%= item.title %></p>
-                        <h5>Kategorien:</h5>
-                        <p> <%= item.category.name %> </p>
-                        <div class="date">
-                            <p>Erstelldatum: <%= item.created_at.strftime("%d.%m.%Y") %></p>
-                        </div>
-                    </div>
-                <% end %>
-                </div>
-            <% else %>
-                <div class="col">
-                    <div class="card-body">
-                        <div class="symbol">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <h5>Titel:</h5>
-                        <p><%= item.title %></p>
-                        <h5>Kategorien:</h5>
-                        <p> <%= item.category.name %> </p>
-                        <div class="date">
-                            <p>Erstelldatum: <%= item.created_at.strftime("%d.%m.%Y") %></p>
-                        </div>
+                <div class="d-flex flex-column">
+                    <div class="link">
+                        <%= link_to idea_problem_path(item) do %>
+                            <%= render "shared/card_overview", item: item %>
+                        <% end %>
                     </div>
                 </div>
             <% end %>
+        <% end %>
         </div>
-    <% end %>
+        <div class="col">
+        <% @idea_problems.each do |item| %>
+            <% if item.type_idea == false %>
+                <div class="d-flex flex-column">
+                    <div class="link">
+                        <%= link_to idea_problem_path(item) do %>
+                            <%= render "shared/card_overview", item: item %>
+                        <% end %>
+                    </div>
+                </div>
+            <% end %>
+        <% end %>
+        </div>
+    </div>
 </div>
 
 

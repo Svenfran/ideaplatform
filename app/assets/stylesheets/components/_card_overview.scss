@@ -14,6 +14,11 @@
     }
 }
 
+.link a {
+    text-decoration: none;
+    color: #222;
+}
+
 .symbol {
     display: flex;
     justify-content: right;
@@ -26,3 +31,9 @@
         color: lightslategray;
     }
 }
+
+.wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+

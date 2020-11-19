@@ -1,0 +1,30 @@
+.card-details-body {
+    width: 50vw;
+    margin: 0 auto 12px auto;
+    background: white;
+    border-radius: 4px;
+    padding: 16px 50px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    h5 {
+        font-size: 14px;
+        font-weight: bold;
+    }
+    p {
+        font-size: small;
+        a {
+            text-decoration: none;
+        }
+    }
+}
+
+.categories, .attachments {
+    display: flex;
+    p {
+        font-size: 10px;
+    }
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,12 @@
+<div class="card-body">
+    <div class="symbol">
+        <i class="fas fa-lock"></i>
+    </div>
+    <h5>Titel:</h5>
+    <p><%= item.title %></p>
+    <h5>Kategorien:</h5>
+    <p> <%= item.category.name %> </p>
+    <div class="date">
+        <p>Erstelldatum: <%= item.created_at.strftime("%d.%m.%Y") %></p>
+    </div>
+</div>
