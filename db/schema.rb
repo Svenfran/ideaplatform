@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_17_082300) do
+ActiveRecord::Schema.define(version: 2020_11_20_143321) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,15 +40,23 @@ ActiveRecord::Schema.define(version: 2020_11_17_082300) do
     t.index ["user_id"], name: "index_contact_messages_on_user_id"
   end
 
+  create_table "idea_problem_categories", force: :cascade do |t|
+    t.bigint "category_id", null: false
+    t.bigint "idea_problem_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_idea_problem_categories_on_category_id"
+    t.index ["idea_problem_id"], name: "index_idea_problem_categories_on_idea_problem_id"
+  end
+
   create_table "idea_problems", force: :cascade do |t|
     t.string "title"
     t.text "description_long"
     t.boolean "type_idea"
+    t.boolean "status_open"
     t.bigint "user_id", null: false
-    t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["category_id"], name: "index_idea_problems_on_category_id"
     t.index ["user_id"], name: "index_idea_problems_on_user_id"
   end
 
@@ -66,6 +74,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_082300) do
 
   add_foreign_key "attachments", "idea_problems"
   add_foreign_key "contact_messages", "users"
-  add_foreign_key "idea_problems", "categories"
+  add_foreign_key "idea_problem_categories", "categories"
+  add_foreign_key "idea_problem_categories", "idea_problems"
   add_foreign_key "idea_problems", "users"
 end

@@ -1,12 +1,27 @@
 <div class="card-body">
     <div class="symbol">
+    <% if item.status_open %>
+        <i class="fas fa-lock" style="color: white"></i>
+    <% else %>
         <i class="fas fa-lock"></i>
+    <% end %>
     </div>
     <h5>Titel:</h5>
-    <p><%= item.title %></p>
+    <p><%= link_to item.title, idea_problem_path(item) %></p>
     <h5>Kategorien:</h5>
-    <p> <%= item.category.name %> </p>
+    <div class="categories">
+        <p>
+        <% item.categories.each_with_index do |c, i| %>
+            <% if i == item.categories.length - 1 %>
+                <%= c.name %>
+            <% else %>
+             <%= c.name + " | "   %> 
+            <% end %>
+        <% end %>
+        </p>
+    </div>
     <div class="date">
+        <p><em><%= item.type_idea ? "IDEA" : "PROBLEM" %></em></p>
         <p>Erstelldatum: <%= item.created_at.strftime("%d.%m.%Y") %></p>
     </div>
 </div>

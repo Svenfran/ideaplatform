@@ -12,7 +12,7 @@
     p {
         font-size: small;
         a {
-            text-decoration: none;
+            color: #222;
         }
     }
 }
@@ -20,11 +20,16 @@
 .categories, .attachments {
     display: flex;
     p {
-        font-size: 10px;
+        font-size: 12px;
     }
 }
 
 .info {
     display: flex;
     justify-content: space-between;
+    p a {
+        text-decoration: none;
+        // color: #06BCC1;
+        color: #0091AD;
+    }
 }

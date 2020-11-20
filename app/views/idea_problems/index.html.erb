@@ -1,34 +1,36 @@
-<div class="pt-5"></div>
-<div class="container pt-5">
-    <div class="wrapper">
-        <div class="col">
-        <% @idea_problems.each do |item| %>
-            <% if item.type_idea == true %>
-                <div class="d-flex flex-column">
-                    <div class="link">
-                        <%= link_to idea_problem_path(item) do %>
+<div class="content">
+    <div class="container">
+        <div class="wrapper">
+            <div class="col">
+            <h4>IDEAS</h4>
+            <% @idea_problems.each do |item| %>
+                <% if item.type_idea == true %>
+                    <div class="d-flex flex-column">
+                        <div class="link">
+                            <%#= link_to idea_problem_path(item) do %>
                             <%= render "shared/card_overview", item: item %>
-                        <% end %>
+                            <%# end %>
+                        </div>
                     </div>
-                </div>
+                <% end %>
             <% end %>
-        <% end %>
-        </div>
-        <div class="col">
-        <% @idea_problems.each do |item| %>
-            <% if item.type_idea == false %>
-                <div class="d-flex flex-column">
-                    <div class="link">
-                        <%= link_to idea_problem_path(item) do %>
+            </div>
+            <div class="col">
+            <h4>PROBLEMS</h4>
+            <% @idea_problems.each do |item| %>
+                <% if item.type_idea == false %>
+                    <div class="d-flex flex-column">
+                        <div class="link">
+                            <%#= link_to idea_problem_path(item) do %>
                             <%= render "shared/card_overview", item: item %>
-                        <% end %>
+                            <%# end %>
+                        </div>
                     </div>
-                </div>
+                <% end %>
             <% end %>
-        <% end %>
+            </div>
         </div>
     </div>
 </div>
 
 
- 

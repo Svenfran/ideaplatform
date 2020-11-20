@@ -1,18 +1,30 @@
 <div class="card-details-body">
-    <h5>Titel:</h5>
+    <h5><%= @idea_problem.type_idea ? "Ideen Titel:" : "Problem Titel:" %></h5>
     <p><strong><%= @idea_problem.title %></strong></p>
     <div class="categories">
-        <p><%= @idea_problem.category.name %></p>
+        <p>
+        <% @idea_problem.categories.each_with_index do |c, i| %>
+            <% if i == @idea_problem.categories.length - 1 %>
+                <%= c.name %>
+            <% else %>
+             <%= c.name + " | "   %> 
+            <% end %>
+        <% end %>
+        </p>
     </div>
     <h5>Beschreibung:</h5>
-    <p><%= @idea_problem.description_long %></p>
-    <h5>Anhänge:</h5>
-    <div class="attachments">
-        <p><%= "Anhang" %></p>
-    </div>
+    <% if @idea_problem.status_open %>
+        <p><%= @idea_problem.description_long %></p>
+        <h5>Anhänge:</h5>
+        <div class="attachments">
+            <p><%= "Anhang" %></p>
+        </div>
+    <% else %>
+        <p><strong>Bitte kontaktieren Sie den Ersteller für weitere Informationen!</strong></p>
+    <% end %>
     <div class="info">
-        <p>Ersteller: <%= current_user.email.split("@")[0] %></p>
-        <p>Ersteller kontaktieren</p>
+        <p>Ersteller: <%= @idea_problem.user.email.split("@")[0] %></p>
+        <p><%= link_to "Ersteller kontaktieren", "#" %></p>
         <p>Erstelldatum: <%= @idea_problem.created_at.strftime("%d.%m.%Y") %></p>
     </div>
     <p style="color:lightslategray"><em>Privatperson</em></p>

@@ -1,4 +1,5 @@
 class IdeaProblemsController < ApplicationController
+    skip_before_action :authenticate_user!, only: [ :index ]
     before_action :set_idea_problem, only: %i[show update destroy]
 
     def index
@@ -19,7 +20,11 @@ class IdeaProblemsController < ApplicationController
         # authorize @idea_problem
 
         if @idea_problem.save
-            redirect_to idea_problems_path, notice: "Idea/Problem successfully created."
+            if @idea_problem.type_idea
+                redirect_to idea_problems_path, notice: "Idea successfully created."
+            else
+                redirect_to idea_problems_path, notice: "Problem successfully created."
+            end
         else
             render :new
         end
@@ -32,7 +37,7 @@ class IdeaProblemsController < ApplicationController
     end
 
     def idea_problem_params
-        params.require(:idea_problem).permit(:title, :description_long, :type_idea, :category_id)
+        params.require(:idea_problem).permit(:title, :description_long, :type_idea, :status_open, category_ids: [])
     end
  
 end

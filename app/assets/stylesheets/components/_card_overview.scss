@@ -26,14 +26,20 @@
 
 .date {
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
     p {
         color: lightslategray;
+        font-size: 12px;
     }
 }
 
 .wrapper {
     display: flex;
     justify-content: space-around;
+    h4 {
+        text-align: center;
+        margin-bottom: 50px;
+    }
 }
+
 

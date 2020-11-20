@@ -1,18 +1,25 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-12">
-      <div class="form-login">
+      <div class="form-ncu">
         <%= simple_form_for([@idea_problem]) do |f| %>
-          <%= f.input :title, autocomplete: :off, label: "Title" %>
-          <%= f.input :description_long, label: "Description" %>
-          <%= f.input :type_idea, as: :radio_buttons, collection: [["Idea", true], ["Problem", false]], checked: true, label: "Please choose" %>
-          <%= f.association :category %>
-          <%#= f.collection_select :category_id, Category.all, :id, :name, prompt: true, input_html: { multiple: true } %>
-          <%= f.button :submit, "Create Idea or Problem", class: 'btn btn-primary mb-3'%>
-
+          <%= f.input :title, autocomplete: :off, label: "Titel" %>
+          <%= f.input :status_open, as: :radio_buttons, collection: [["Offen", true], ["Auf Anfrage", false]], checked: false, label: "Möchten Sie Ihre Beschreibung öffentlich zugänglich machen?" %>
+          <%= f.input :description_long, as: :text, input_html: { 'rows': 10 }, label: "Beschreibung" %>
+          <%= f.input :type_idea, as: :radio_buttons, collection: [["Idee", true], ["Problem", false]], checked: true, label: "Bitte wählen" %>
+          <%= f.label :category_ids, label: "Kategorien" %><br>
+          <%= f.collection_check_boxes :category_ids, Category.all, :id, :name, prompt: true, input_html: { multiple: true } do |b| %>
+            <span>
+              <%= b.check_box %>
+              <%= b.label %>
+              <br>
+            </span>
+          <% end %>
+          <div class="mt-3">
+            <%= f.button :submit, "Veröffentlichen", class: 'btn btn-primary mb-3'%>
+          </div>
         <% end %>
-        <%= link_to "Back", idea_problems_path, class: 'back'%>
-
+        <%= link_to "<< Back", idea_problems_path %>
       </div>
     </div>
   </div>
