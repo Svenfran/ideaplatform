@@ -1,6 +1,6 @@
 class IdeaProblemsController < ApplicationController
     skip_before_action :authenticate_user!, only: [ :index ]
-    before_action :set_idea_problem, only: %i[show update destroy]
+    before_action :set_idea_problem, only: %i[show edit update destroy]
 
     def index
         @idea_problems = IdeaProblem.all
@@ -29,6 +29,26 @@ class IdeaProblemsController < ApplicationController
             render :new
         end
     end
+
+    def edit; end
+
+    def update
+        if @idea_problem.update(idea_problem_params)
+            if @idea_problem.type_idea
+                redirect_to idea_problem_path, notice: "Idea successfully updated."
+            else
+                redirect_to idea_problem_path, notice: "Problem successfully updated."
+            end
+        else
+            render :edit
+        end
+    end
+
+    def destroy
+        @idea_problem.destroy
+        redirect_to idea_problems_path
+    end
+
 
     private
 

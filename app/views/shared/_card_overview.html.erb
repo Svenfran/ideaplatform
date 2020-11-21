@@ -1,13 +1,29 @@
 <div class="card-body">
-    <div class="symbol">
-    <% if item.status_open %>
-        <i class="fas fa-lock" style="color: white"></i>
-    <% else %>
-        <i class="fas fa-lock"></i>
-    <% end %>
+    <div class="symbols">
+        <div class="edit-delete">
+            <%= link_to edit_idea_problem_path(item) do %>
+                <i class="fas fa-pen">
+                    <span id="tooltip-text">bearbeiten</span>
+                </i>
+            <% end %>
+            <%= link_to idea_problem_path(item), method: :delete, data: {confirm: "Delete #{item.title}?"} do %>
+                <i class="far fa-trash-alt">
+                    <span id="tooltip-text">löschen</span>
+                </i>
+            <% end %>
+        </div>
+        <% if item.status_open %>
+            <i class="fas fa-lock" style="color: white"></i>
+        <% else %>
+            <i class="fas fa-lock">
+                <span id="tooltip-text" style="white-space: nowrap;">Details auf Anfrage</span>
+            </i>
+        <% end %>
     </div>
-    <h5>Titel:</h5>
-    <p><%= link_to item.title, idea_problem_path(item) %></p>
+    <%= link_to idea_problem_path(item) do %>
+        <h5>Titel:</h5>
+        <p><%= item.title %></p>
+    <% end %>
     <h5>Kategorien:</h5>
     <div class="categories">
         <p>
@@ -15,7 +31,7 @@
             <% if i == item.categories.length - 1 %>
                 <%= c.name %>
             <% else %>
-             <%= c.name + " | "   %> 
+                <%= c.name + " | " %> 
             <% end %>
         <% end %>
         </p>

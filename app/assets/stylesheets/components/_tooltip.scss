@@ -1,0 +1,29 @@
+#tooltip-text {
+    position: absolute;
+    border: 1px solid #ccc;
+    display: none;
+    background: white;
+    font-family: "Nunito", "Helvetica", "sans-serif";
+    font-size: 12px;
+    font-weight: normal;
+    margin-top: 10px;
+    padding: 5px;
+    border-radius: 4px;
+    bottom: 20px;
+    z-index: 1;
+}
+  
+.fa-trash-alt:hover #tooltip-text {
+    display: block;
+}
+.fa-pen:hover #tooltip-text {
+    display: block;
+}
+.fa-lock:hover #tooltip-text {
+    display: block;
+    bottom: 28px;
+}
+
+i {
+    position: relative;
+}

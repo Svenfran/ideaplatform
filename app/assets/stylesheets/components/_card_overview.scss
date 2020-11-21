@@ -19,9 +19,20 @@
     color: #222;
 }
 
-.symbol {
+.symbols {
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    // font-size: 14px
+}
+
+.edit-delete {
+    display: flex;
+    justify-content: space-between;
+    width: 40px;
+    a {
+        color: #222;
+    }
 }
 
 .date {

@@ -1,4 +1,23 @@
 <div class="card-details-body">
+     <div class="symbols">
+        <div class="edit-delete">
+            <%= link_to edit_idea_problem_path(@idea_problem) do %>
+                <i class="fas fa-pen">
+                    <span id="tooltip-text">bearbeiten</span>
+                </i>
+            <% end %>
+            <%= link_to idea_problem_path(@idea_problem), method: :delete, data: {confirm: "Delete #{@idea_problem.title}?"} do %>
+                <i class="far fa-trash-alt">
+                    <span id="tooltip-text">löschen</span>
+                </i>
+            <% end %>
+        </div>
+        <% if @idea_problem.status_open %>
+            <i class="fas fa-lock" style="color: white"></i>
+        <% else %>
+            <i class="fas fa-lock"></i>
+        <% end %>
+    </div>
     <h5><%= @idea_problem.type_idea ? "Ideen Titel:" : "Problem Titel:" %></h5>
     <p><strong><%= @idea_problem.title %></strong></p>
     <div class="categories">
