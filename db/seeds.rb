@@ -25,8 +25,10 @@ end
 puts "Creating users..."
 user1 = User.create(email: "john@example.com", password: "password")
 user2 = User.create(email: "jeff@example.com", password: "password")
+user3 = User.create(email: "ben@example.com", password: "password")
 user1.save
 user2.save
+user3.save
 
 
 # IDEAS

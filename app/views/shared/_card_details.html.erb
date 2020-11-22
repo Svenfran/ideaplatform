@@ -1,6 +1,7 @@
 <div class="card-details-body">
      <div class="symbols">
         <div class="edit-delete">
+        <% if @idea_problem.user == current_user %>
             <%= link_to edit_idea_problem_path(@idea_problem) do %>
                 <i class="fas fa-pen">
                     <span id="tooltip-text">bearbeiten</span>
@@ -11,6 +12,7 @@
                     <span id="tooltip-text">löschen</span>
                 </i>
             <% end %>
+        <% end %>
         </div>
         <% if @idea_problem.status_open %>
             <i class="fas fa-lock" style="color: white"></i>
@@ -36,7 +38,12 @@
         <p><%= @idea_problem.description_long %></p>
         <h5>Anhänge:</h5>
         <div class="attachments">
-            <p><%= "Anhang" %></p>
+            <p>
+            <% @idea_problem.documents do |document| %>
+                <%= cloudinary_url(document.blob.filename, options = {}) %>
+                <%#= link_to document.blob.filename, url_for(document) %>
+            <% end %>
+            </p>
         </div>
     <% else %>
         <p><strong>Bitte kontaktieren Sie den Ersteller für weitere Informationen!</strong></p>
