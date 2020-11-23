@@ -3,24 +3,15 @@ class IdeaProblemsController < ApplicationController
     before_action :set_idea_problem, only: %i[show edit update destroy]
 
     def index
-        # @idea_problems = IdeaProblem.all
         if params[:query].present?
-            # if params[:query].downcase == "idea" || params[:query].downcase == "idee"
-            #     params[:query] = true
-            # elsif params[:query].downcase == "problem"
-            #     params[:query] = false
-            # end
             @idea_problems = IdeaProblem.search_by_title_description_category(params[:query])
           else
             @idea_problems = IdeaProblem.all
-        end
-
-        # @categories = Category.all
+          end
     end
 
     def new
         @idea_problem = IdeaProblem.new
-        # @attachment = Attachment.new
         # authorize @idea_problem
     end
 
@@ -28,9 +19,6 @@ class IdeaProblemsController < ApplicationController
     
     def create
         @idea_problem = IdeaProblem.new(idea_problem_params)
-        # @attachment = Attachment.new(attachment_params)
-        # @idea_problem.attachment = @attachment
-        # @idea_problem.attachments.attach(params[:attachments])
         @idea_problem.user = current_user
         # authorize @idea_problem
 
@@ -74,8 +62,4 @@ class IdeaProblemsController < ApplicationController
         params.require(:idea_problem).permit(:title, :description_long, :type_idea, :status_open, category_ids: [], documents: [])
     end
 
-    # def attachment_params
-    #     params.require(:attachment).permit(:title, :size, :idea_problem_id)
-    # end
- 
 end

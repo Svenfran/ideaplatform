@@ -39,9 +39,13 @@
         <h5>Anhänge:</h5>
         <div class="attachments">
             <p>
-            <% @idea_problem.documents do |document| %>
-                <%= document.filename %>
-                <%= link_to document.key, url_for(document) %>
+            <% @idea_problem.documents.each_with_index do |document, i| %>
+                <% if i == @idea_problem.documents.length - 1 %>
+                    <%= link_to document.filename, rails_blob_path(document, disposition: "attachment"), target: "_blank" %>
+                    <%#= link_to "X", rails_blob_path(document), method: :delete, data: {confirm: "Delete attachment?"} %>
+                <% else %> 
+                    <%= link_to document.filename, rails_blob_path(document, disposition: "attachment"), target: "_blank" %> | 
+                <% end %>
             <% end %>
             </p>
         </div>
