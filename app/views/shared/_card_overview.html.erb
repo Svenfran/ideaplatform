@@ -22,18 +22,20 @@
             </i>
         <% end %>
     </div>
-    <%= link_to idea_problem_path(item) do %>
-        <h5>Titel:</h5>
-        <p><%= item.title %></p>
-    <% end %>
+    <h5>Titel:</h5>
+    <div class="title">
+        <%= link_to idea_problem_path(item) do %>
+            <p><%= item.title %></p>
+        <% end %>
+    </div>
     <h5>Kategorien:</h5>
     <div class="categories">
         <p>
         <% item.categories.each_with_index do |c, i| %>
             <% if i == item.categories.length - 1 %>
-                <%= c.name %>
+                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get' %>
             <% else %>
-                <%= c.name + " | " %> 
+                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get' %> | 
             <% end %>
         <% end %>
         </p>

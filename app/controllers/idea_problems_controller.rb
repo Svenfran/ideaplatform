@@ -3,8 +3,19 @@ class IdeaProblemsController < ApplicationController
     before_action :set_idea_problem, only: %i[show edit update destroy]
 
     def index
-        @idea_problems = IdeaProblem.all
-        @categories = Category.all
+        # @idea_problems = IdeaProblem.all
+        if params[:query].present?
+            # if params[:query].downcase == "idea" || params[:query].downcase == "idee"
+            #     params[:query] = true
+            # elsif params[:query].downcase == "problem"
+            #     params[:query] = false
+            # end
+            @idea_problems = IdeaProblem.search_by_title_description_category(params[:query])
+          else
+            @idea_problems = IdeaProblem.all
+        end
+
+        # @categories = Category.all
     end
 
     def new
@@ -52,7 +63,6 @@ class IdeaProblemsController < ApplicationController
         @idea_problem.destroy
         redirect_to idea_problems_path
     end
-
 
     private
 

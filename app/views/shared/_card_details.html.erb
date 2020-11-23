@@ -26,9 +26,9 @@
         <p>
         <% @idea_problem.categories.each_with_index do |c, i| %>
             <% if i == @idea_problem.categories.length - 1 %>
-                <%= c.name %>
+                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get' %>
             <% else %>
-             <%= c.name + " | "   %> 
+                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get' %> |  
             <% end %>
         <% end %>
         </p>
@@ -40,8 +40,8 @@
         <div class="attachments">
             <p>
             <% @idea_problem.documents do |document| %>
-                <%= cloudinary_url(document.blob.filename, options = {}) %>
-                <%#= link_to document.blob.filename, url_for(document) %>
+                <%= document.filename %>
+                <%= link_to document.key, url_for(document) %>
             <% end %>
             </p>
         </div>

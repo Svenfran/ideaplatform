@@ -4,11 +4,11 @@
       <div class="form-ncu">
         <%= simple_form_for([@idea_problem]) do |f| %>
           <%= f.input :title, autocomplete: :off, label: "Titel" %>
-          <%= f.input :status_open, as: :radio_buttons, collection: [["Offen", true], ["Auf Anfrage", false]], checked: false, label: "Möchten Sie Ihre Beschreibung öffentlich zugänglich machen?" %>
+          <%= f.input :status_open, as: :radio_buttons, collection: [["Offen", true], ["Auf Anfrage", false]], label: "Möchten Sie Ihre Beschreibung öffentlich zugänglich machen?" %>
           <%= f.input :description_long, as: :text, input_html: { 'rows': 10 }, label: "Beschreibung" %>
-          <%= f.input :documents, as: :file, input_html: { multiple: true }, resource_type: :auto, label: "Fügen Sie Anhänge hinzu" %>
-          <%#= f.file_field :attachments, input_html: { multiple: true }, label: "Füge Anhänge hinzu" %>
-          <%= f.input :type_idea, as: :radio_buttons, collection: [["Idee", true], ["Problem", false]], checked: true, label: "Bitte wählen" %>
+          <%#= f.input :documents, as: :file, input_html: { multiple: true }, resource_type: :auto, label: "Fügen Sie Anhänge hinzu" %>
+          <%= f.file_field :documents, input_html: { multiple: true }, resource_type: :auto, direct_upload: true,  label: "Füge Anhänge hinzu" %>
+          <%= f.input :type_idea, as: :radio_buttons, collection: [["Idee", true], ["Problem", false]], label: "Bitte wählen" %>
           <%= f.label :category_ids, label: "Kategorien" %><br>
           <%= f.collection_check_boxes :category_ids, Category.all, :id, :name, prompt: true, input_html: { multiple: true } do |b| %>
             <span>
