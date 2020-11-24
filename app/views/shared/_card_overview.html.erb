@@ -41,7 +41,11 @@
         </p>
     </div>
     <div class="date">
-        <p><em><%= item.type_idea ? "IDEA" : "PROBLEM" %></em></p>
+        <% if item.type_idea %>
+            <p><em><%= link_to "IDEA", {controller: 'idea_problems', action: 'index', query: params[:query] = item.type_idea}, method: 'get' %></em></p>
+        <% else %>
+            <p><em><%= link_to "PROBLEM", {controller: 'idea_problems', action: 'index', query: params[:query] = item.type_idea}, method: 'get' %></em></p>
+        <% end %>
         <p>Erstelldatum: <%= item.created_at.strftime("%d.%m.%Y") %></p>
     </div>
 </div>

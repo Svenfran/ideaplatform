@@ -54,7 +54,7 @@
     <% end %>
     <div class="info">
         <p>Ersteller: <%= @idea_problem.user.email.split("@")[0] %></p>
-        <p><%= link_to "Ersteller kontaktieren", "#" %></p>
+        <p><%= link_to "Ersteller kontaktieren", new_idea_problem_contact_message_path(@idea_problem) %></p>
         <p>Erstelldatum: <%= @idea_problem.created_at.strftime("%d.%m.%Y") %></p>
     </div>
     <p style="color:lightslategray"><em>Privatperson</em></p>

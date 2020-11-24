@@ -5,9 +5,9 @@ class IdeaProblemsController < ApplicationController
     def index
         if params[:query].present?
             @idea_problems = IdeaProblem.search_by_title_description_category(params[:query])
-          else
+        else
             @idea_problems = IdeaProblem.all
-          end
+        end
     end
 
     def new

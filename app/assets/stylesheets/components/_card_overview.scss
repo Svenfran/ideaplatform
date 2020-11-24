@@ -42,11 +42,15 @@
         color: lightslategray;
         font-size: 12px;
     }
+    a {
+        color: lightslategray;
+        text-decoration: none;
+    }
 }
 
-.wrapper {
+.wrapper, .wrapper-item {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     h4 {
         text-align: center;
         margin-bottom: 50px;
@@ -58,6 +62,10 @@
             }
         }
     }
+}
+
+.wrapper-item {
+    display: block;
 }
 
 .categories, .title {

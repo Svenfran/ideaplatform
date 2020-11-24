@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :idea_problems do
     resources :attachments
+    resources :contact_messages, only: [:new, :create]
   end
   resources :categories
   resources :attachments, only: [:destroy]

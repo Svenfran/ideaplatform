@@ -13,7 +13,8 @@
 
         <div class="wrapper">
             <div class="col">
-            <h4><%= link_to "IDEAS", {controller: 'idea_problems', action: 'index', query: params[:query] = true}, method: 'get' %></h4>
+            <h4><%= link_to "IDEAS", {controller: 'idea_problems', action: 'index', query: params[:query] = true}, method: 'get' %>
+            <%# = @idea_problems.where(type_idea: :true).count%></h4>
             <% @idea_problems.each do |item| %>
                 <% if item.type_idea == true %>
                     <div class="d-flex flex-column">
@@ -23,7 +24,8 @@
             <% end %>
             </div>
             <div class="col">
-            <h4><%= link_to "PROBLEMS", {controller: 'idea_problems', action: 'index', query: params[:query] = false}, method: 'get' %></h4>
+            <h4><%= link_to "PROBLEMS", {controller: 'idea_problems', action: 'index', query: params[:query] = false}, method: 'get' %>
+            <%# = @idea_problems.where(type_idea: :false).count%></h4>
             <% @idea_problems.each do |item| %>
                 <% if item.type_idea == false %>
                     <div class="d-flex flex-column">
