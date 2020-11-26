@@ -1,0 +1,35 @@
+<style>
+  html {
+    font-family: arial;
+  }
+  .item {
+    font-weight: bold;
+  }
+</style>
+
+E-Mail from user: <%= @sender_name.capitalize %>
+<br>
+<br>
+
+<table>
+  <tr>
+    <td class="item">Concerning your <%= IdeaProblem.find(@recipient_idea_id).type_idea ? "Idea" : "Problem" %> with Title:</td>
+    <td><%= @recipient_idea_title %></td>
+  </tr>
+  <tr>
+    <td class="item">Subject:</td>
+    <td><%= @sender_subject %></td>
+  </tr>
+  <tr>
+    <td class="item">Message:</td>
+    <td><%= @sender_message %></td>
+  </tr>
+</table>
+<br>
+
+Please do not answer to this E-Mail. <br>
+To get intouch with <%= @sender_name %>, please write to this e-mail: <%= mail_to @sender_email %>
+
+
+
+

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :idea_problems do
     resources :attachments
     resources :contact_messages, only: [:new, :create]
+    get 'idea_problems/:id/contact_messages/confirmation', to: 'contact_messages#confirmation', as: 'confirmation'
   end
   resources :categories
   resources :attachments, only: [:destroy]

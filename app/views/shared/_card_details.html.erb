@@ -54,9 +54,11 @@
     <% end %>
     <div class="info">
         <p>Ersteller: <%= @idea_problem.user.email.split("@")[0] %></p>
+        <%#= mail_to @idea_problem.user.email, "Ersteller kontaktieren" %>
         <p><%= link_to "Ersteller kontaktieren", new_idea_problem_contact_message_path(@idea_problem) %></p>
         <p>Erstelldatum: <%= @idea_problem.created_at.strftime("%d.%m.%Y") %></p>
     </div>
     <p style="color:lightslategray"><em>Privatperson</em></p>
     <p><%= link_to "<< BACK", idea_problems_path %></p>
+    <%#= link_to "<< BACK", request.referer.present? ? request.referer : default_path %>
 <div>

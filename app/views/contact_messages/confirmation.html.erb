@@ -1,0 +1,16 @@
+<div class="content">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center align-items-center">
+                <div class="confirmation">
+                    <h3 class="mb-4">Your E-Mail has been sent successfuly to <%= @idea_problem.user.email.split('@')[0].capitalize %>!</h3>
+                    <h3>Please check your Spam-Folder as well, a copy of your E-Mail was sent to you too 😉</h3>
+                    <div class="d-flex justify-content-around mt-5">
+                        <%= link_to "Back to Idea", idea_problem_path(@idea_problem), class: 'btn btn-dark' %>
+                        <%= link_to "Browse", idea_problems_path, class: 'btn btn-dark'%>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

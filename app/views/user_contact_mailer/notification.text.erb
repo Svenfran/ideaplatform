@@ -1,0 +1,9 @@
+
+E-Mail from user: <%= @sender_email %>
+
+Concerning your <%= IdeaProblem.find(@recipient_idea_id).type_idea ? "Idea" : "Problem" %> with Title: <%= @recipient_idea_title %>
+Subject: <%= @sender_subject %>
+Message: <%= @sender_message %>
+
+Please do not answer this E-Mail.
+To get intouch with <%= @sender_name %>, please write to this e-mail: <%= mail_to @sender_email %>
