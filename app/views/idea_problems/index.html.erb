@@ -10,31 +10,22 @@
             <%= submit_tag "Search", class: "btn btn-dark" %>
         </div>
         <% end %>
+    </div>
+</div>
 
-        <div class="wrapper">
-            <div class="col">
-            <h4><%= link_to "IDEAS", {controller: 'idea_problems', action: 'index', query: params[:query] = true}, method: 'get' %>
-            <%# = @idea_problems.where(type_idea: :true).count%></h4>
-            <% @idea_problems.each do |item| %>
-                <% if item.type_idea == true %>
-                    <div class="d-flex flex-column">
-                        <%= render "shared/card_overview", item: item %>
-                    </div>
-                <% end %>
-            <% end %>
-            </div>
-            <div class="col">
-            <h4><%= link_to "PROBLEMS", {controller: 'idea_problems', action: 'index', query: params[:query] = false}, method: 'get' %>
-            <%# = @idea_problems.where(type_idea: :false).count%></h4>
-            <% @idea_problems.each do |item| %>
-                <% if item.type_idea == false %>
-                    <div class="d-flex flex-column">
-                        <%= render "shared/card_overview", item: item %>
-                    </div>
-                <% end %>
-            <% end %>
-            </div>
+<div class="wrapper">
+    <div class="filter">
+        <div class="filter-links">
+            <h4 class="idea"><%= link_to "IDEAS", {controller: 'idea_problems', action: 'index', query: params[:query] = true}, method: 'get' %></h4>
+            <h4 class="and">&</h4> 
+            <h4 class="problem"><%= link_to "PROBLEMS", {controller: 'idea_problems', action: 'index', query: params[:query] = false}, method: 'get' %></h4>
         </div>
+        <p><%= link_to "clear filter", {controller: 'idea_problems', action: 'index', query: params[:query] = ""}, method: 'get' %></p>
+    </div>
+    <div class="idea-grid">
+        <% @idea_problems.each do |item| %>
+            <%= render "shared/card_overview", item: item %>
+        <% end %>
     </div>
 </div>
 
