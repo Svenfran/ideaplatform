@@ -10,6 +10,27 @@
             <%= submit_tag "Search", class: "btn btn-dark" %>
         </div>
         <% end %>
+
+        <div class="hide">
+            <%= form_tag idea_problems_path, method: :get do %>
+            <div class="d-flex mb-4">
+                <% Category.all.each do |cat| %>
+                    <%= check_box_tag :query,
+                        params[:query],
+                        label: cat.name,
+                        class: "form-controll"
+                    %>
+            <% end %>
+                <%= submit_tag "Search", class: "btn btn-dark" %>
+            </div>
+            <% end %>
+        
+            <%= simple_form_for idea_problems_path, method: :get do |f| %>
+                <%= f.input :category_ids, label: "Categories", collection: Category.all, as: :check_boxes, include_hidden: false %>
+                <%= submit_tag "search", class: "btn btn-primary" %>
+            <% end %>
+        </div>
+
     </div>
 </div>
 

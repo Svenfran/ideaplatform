@@ -4,6 +4,7 @@
   }
   .item {
     font-weight: bold;
+    margin-right: 200px;
   }
 </style>
 
@@ -13,7 +14,7 @@ E-Mail from user: <%= @sender_name.capitalize %>
 
 <table>
   <tr>
-    <td class="item">Concerning your <%= IdeaProblem.find(@recipient_idea_id).type_idea ? "Idea" : "Problem" %> with Title:</td>
+    <td class="item">Concerning&nbsp;your&nbsp;<%= IdeaProblem.find(@recipient_idea_id).type_idea ? "Idea" : "Problem" %>&nbsp;with&nbsp;Title:</td>
     <td><%= @recipient_idea_title %></td>
   </tr>
   <tr>
