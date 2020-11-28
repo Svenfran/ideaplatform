@@ -1,18 +1,18 @@
 <div class="card-body">
     <div class="symbols">
         <div class="edit-delete">
-        <% if item.user == current_user %>
-            <%= link_to edit_idea_problem_path(item) do %>
-                <i class="fas fa-pen">
-                    <span id="tooltip-text">bearbeiten</span>
-                </i>
+            <% if item.user == current_user %>
+                <%= link_to edit_idea_problem_path(item) do %>
+                    <i class="fas fa-pen">
+                        <span id="tooltip-text">bearbeiten</span>
+                    </i>
+                <% end %>
+                <%= link_to idea_problem_path(item), method: :delete, data: {confirm: "Delete #{item.title}?"} do %>
+                    <i class="far fa-trash-alt">
+                        <span id="tooltip-text">löschen</span>
+                    </i>
+                <% end %>
             <% end %>
-            <%= link_to idea_problem_path(item), method: :delete, data: {confirm: "Delete #{item.title}?"} do %>
-                <i class="far fa-trash-alt">
-                    <span id="tooltip-text">löschen</span>
-                </i>
-            <% end %>
-        <% end %>
         </div>
         <% if item.status_open %>
             <i class="fas fa-lock" style="color: white"></i>

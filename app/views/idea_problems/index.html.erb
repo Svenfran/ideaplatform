@@ -11,7 +11,12 @@
         </div>
         <% end %>
 
+
         <div class="hide">
+            <div class="d-flex">
+                <p>Ideas <small>(<%= @idea_problems.where(type_idea: true).count %>)</small></p>
+                <p>Problems <small>(<%= @idea_problems.where(type_idea: false).count %>)</small></p>
+            </div>
             <%= form_tag idea_problems_path, method: :get do %>
             <div class="d-flex mb-4">
                 <% Category.all.each do |cat| %>
@@ -50,6 +55,32 @@
     </div>
 </div>
 
+<div class="arrow-top">
+    <i class="fas fa-arrow-circle-up"></i>
+</div>
+
 <script>
 document.querySelector(".form-control").value = "";
+
+const topArrow = document.querySelector(".arrow-top");
+
+window.onscroll = () => { 
+  if (document.documentElement.scrollTop >= 250 ) {
+    topArrow.style.display = "block";
+    topArrow.style.transition = "all 25s";
+  } 
+  else {
+    topArrow.style.display = "none";
+  }
+};
+
+const topScroll = () => {
+    window.scrollTo(0,10);
+};
+
+topArrow.onclick = (event) => {
+    event.preventDefault();
+    topScroll();
+}
+
 </script>
