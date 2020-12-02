@@ -3,7 +3,17 @@ class IdeaProblemsController < ApplicationController
     before_action :set_idea_problem, only: %i[show edit update destroy]
 
     def index
-        if params[:query].present?
+        if params[:filter].present?
+            # raise
+            if params[:filter].include?("true") && params[:filter].include?("false")
+                params[:filter].delete_if {|val| val == "true" || val == "false"}
+                @idea_problems = IdeaProblem.all if params[:filter].length == 0
+                @idea_problems = IdeaProblem.search_by_category_type(params[:filter]) if params[:filter].length > 0
+            else
+                @idea_problems = IdeaProblem.search_by_category_type(params[:filter])
+            end
+        
+        elsif params[:query].present?
             @idea_problems = IdeaProblem.search_by_title_description_category(params[:query])
         else
             @idea_problems = IdeaProblem.all

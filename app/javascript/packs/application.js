@@ -25,6 +25,7 @@ require("channels")
 // External imports
 import "bootstrap";
 import { clickArrow, scrollToTop } from "../components/top_scroll";
+import { toggleFilter } from "../components/toggle_filter";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -34,4 +35,5 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   scrollToTop();
   clickArrow();
+  toggleFilter();
 });

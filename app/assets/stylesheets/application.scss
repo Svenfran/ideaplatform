@@ -18,8 +18,19 @@ body, html {
     scroll-behavior: smooth;
 }
 
+.main-container {
+  display: flex;
+}
+
 .content {
     padding-top: 100px;
+}
+
+.content-index {
+  padding-top: 100px;
+  // width: 80vw;
+  position: relative;
+  left: 23vw;
 }
   
   * {

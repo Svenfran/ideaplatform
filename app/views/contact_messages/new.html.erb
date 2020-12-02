@@ -8,12 +8,13 @@
             <p class="mb-3"><%= @idea_problem.title %></p>
             <hr>
             <%= simple_form_for([@idea_problem, @contact_message]) do |f| %>
-            <%= f.input :sender_subject, autocomplete: :off, label: "Betreff" %>
-            <%= f.input :sender_email, autocomplete: :off, label: "E-Mail" %>
-            <%= f.input :sender_message, as: :text, input_html: { 'rows': 10 }, label: "Nachricht" %>
-            <div class="mt-3">
-                <%= f.button :submit, "Send", class: 'btn btn-dark mb-3'%>
-            </div>
+                <%= f.input :sender_subject, autocomplete: :off, label: "Betreff" %>
+                <%= f.input :sender_email, autocomplete: :off, label: "E-Mail" %>
+                <%= f.input :sender_message, as: :text, input_html: { 'rows': 10 }, label: "Nachricht" %>
+                <div class="mt-3">
+                    <%#= f.button :submit, "Send", class: 'btn btn-dark mb-3'%>
+                    <%= link_to 'Send', "#", class: 'btn btn-dark mb-3', style: 'color: white'%>
+                </div>
             <% end %>
             <%= link_to "<< Back", idea_problem_path(@idea_problem) %>
         </div>

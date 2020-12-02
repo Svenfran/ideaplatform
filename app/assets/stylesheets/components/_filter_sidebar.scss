@@ -1,0 +1,23 @@
+.filter-sidebar {
+    width: 20wv;
+    position: fixed;
+    padding: 100px 30px;
+    height: 100vh;
+    background: white;
+    //  color: white;
+    z-index: 1;
+}
+
+.hide-filter-sidebar {
+    position: fixed;
+    left: 350px;
+    top: 100px;
+    color: lightgray;
+    i {
+        cursor: pointer;
+    }
+}
+
+.hide {
+    display: none;
+}

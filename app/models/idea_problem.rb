@@ -16,4 +16,13 @@ class IdeaProblem < ApplicationRecord
       tsearch: { prefix: true }
   }
 
+  pg_search_scope :search_by_category_type,
+    against: [ :type_idea ],
+    associated_against: {
+      categories: [ :name ]
+    },
+    using: {
+      tsearch: { prefix: true }
+  }
+
 end
