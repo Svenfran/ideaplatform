@@ -24,13 +24,16 @@ body, html {
 
 .content {
     padding-top: 100px;
+    margin: 0 auto;
+    // transition: all 1s ease-in-out;
 }
 
 .content-index {
   padding-top: 100px;
   // width: 80vw;
   position: relative;
-  left: 23vw;
+  left: 21vw;
+  // transition: all 1s ease-in-out;
 }
   
   * {
