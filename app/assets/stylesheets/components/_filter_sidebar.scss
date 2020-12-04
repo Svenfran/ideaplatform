@@ -1,4 +1,6 @@
 .filter-sidebar {
+    display: flex;
+    flex-direction: column;
     width: 20wv;
     position: fixed;
     padding: 100px 30px;
@@ -7,10 +9,12 @@
     //  color: white;
     z-index: 1;
     left: 0;
+    height: 100vh;
 }
 
 .hide-button {
     position: fixed;
+    width: fit-content;
     left: 330px;
     top: 100px;
     color: lightgray;
@@ -24,9 +28,30 @@
 .inactive {
     position: absolute;
     left: -100%;
-    transition: all 1s ease-in-out;
+    transition: all 0s ease-in-out;
 }
 
 .arrow-inactive {
     left: 10px !important;
 }
+.cb {
+    cursor: pointer;
+}
+
+// .cb-input {
+//     position: absolute;
+//     transform: scale(0);
+// }
+
+// .cb-input + label {
+//     cursor: pointer;
+//     border: 1px solid #0091AD;
+//     border-radius: 10px;
+//     padding: 5px;
+
+// }
+
+// .cb-input:checked + label {
+//     background-color: #0091AD;
+//     color: white;
+// }

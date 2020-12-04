@@ -1,9 +1,9 @@
 const scrollToTop = () => {
     const topArrow = document.querySelector(".arrow-top");
     window.onscroll = () => { 
-        if (document.documentElement.scrollTop >= 250 ) {
+      if (document.documentElement.scrollTop >= 250 ) {
         topArrow.style.display = "block";
-        topArrow.style.transition = "all 25s";
+        topArrow.style.transition = "all 2s ease-in-out";
     } 
       else {
         topArrow.style.display = "none";
