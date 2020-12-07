@@ -1,4 +1,4 @@
-<div class="card-body">
+<div id="item-<%= item.id %>" class="card-body">
     <div class="symbols">
         <div class="edit-delete">
             <% if item.user == current_user %>
@@ -7,7 +7,7 @@
                         <span id="tooltip-text">bearbeiten</span>
                     </i>
                 <% end %>
-                <%= link_to idea_problem_path(item), method: :delete, data: {confirm: "Delete #{item.title}?"} do %>
+                <%= link_to idea_problem_path(item), method: :delete, data: {confirm: "Delete #{item.title}?"}, remote: true do %>
                     <i class="far fa-trash-alt">
                         <span id="tooltip-text">löschen</span>
                     </i>

@@ -1,6 +1,6 @@
 <div class="hide-button">
-    <i class="fas fa-caret-square-left" style="font-size: 40px"></i>
-    <i class="fas fa-caret-square-right hide" style="font-size: 40px"></i>
+    <i class="fas fa-angle-left" style="font-size: 40px"></i>
+    <i class="fas fa-angle-right hide" style="font-size: 40px"></i>
 </div>
 <div class="sidebar">
     <div class="filter-sidebar">
@@ -17,7 +17,7 @@
             <%#= submit_tag "Search", class: "btn btn-dark" %>
         </div>
         <% end %>
-        <%= form_tag idea_problems_path, method: :get do %> 
+        <%= form_tag idea_problems_path, method: :get, class: "filter-form" do %> 
             <div class="d-flex flex-column">
                 <hr>
                 <p><strong>Idee oder Problem:</strong></p>
@@ -40,7 +40,7 @@
                     </label>
                 <% end %>
             </div>
-            <%= submit_tag "Filter", class: "btn btn-dark mt-3" %>
+            <%= submit_tag "Filter", class: "btn btn-dark mt-3 submit" %>
         <% end %>
     </div>
 </div>

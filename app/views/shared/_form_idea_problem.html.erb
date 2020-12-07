@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-xs-12 col-sm-12">
       <div class="form-ncu">
-        <%= simple_form_for([@idea_problem]) do |f| %>
+        <%= simple_form_for([@idea_problem], remote: true) do |f| %>
           <%= f.input :title, autocomplete: :off, label: "Titel" %>
           <%= f.input :status_open, as: :radio_buttons, collection: [["Offen", true], ["Auf Anfrage", false]], label: "Möchten Sie Ihre Beschreibung öffentlich zugänglich machen?" %>
           <%= f.input :description_long, as: :text, input_html: { 'rows': 10 }, label: "Beschreibung" %>

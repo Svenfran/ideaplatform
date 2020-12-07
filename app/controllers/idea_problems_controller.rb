@@ -34,9 +34,9 @@ class IdeaProblemsController < ApplicationController
 
         if @idea_problem.save
             if @idea_problem.type_idea
-                redirect_to idea_problems_path, notice: "Idea successfully created."
+                redirect_to idea_problems_path(@idea_problem, anchor: "item-#{@idea_problem.id}"), notice: "Idea successfully created."
             else
-                redirect_to idea_problems_path, notice: "Problem successfully created."
+                redirect_to idea_problems_path(@idea_problem, anchor: "item-#{@idea_problem.id}"), notice: "Problem successfully created."
             end
         else
             render :new

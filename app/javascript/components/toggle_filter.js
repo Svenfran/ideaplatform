@@ -1,6 +1,6 @@
 const toggleFilter = () => {
-    const arrowLeft = document.querySelector('.fa-caret-square-left');
-    const arrowRight = document.querySelector('.fa-caret-square-right');
+    const arrowLeft = document.querySelector('.fa-angle-left');
+    const arrowRight = document.querySelector('.fa-angle-right');
     const button = document.querySelector('.hide-button');
     const sidebar = document.querySelector('.filter-sidebar');
     const content = document.querySelector('.cont');
