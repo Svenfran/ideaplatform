@@ -33,18 +33,18 @@
         <p>
         <% item.categories.each_with_index do |c, i| %>
             <% if i == item.categories.length - 1 %>
-                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get' %>
+                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get', class: 'clear-filter' %>
             <% else %>
-                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get' %> | 
+                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get', class: 'clear-filter' %> | 
             <% end %>
         <% end %>
         </p>
     </div>
     <div class="date">
         <% if item.type_idea %>
-            <p><em><%= link_to "IDEA", {controller: 'idea_problems', action: 'index', filter: params[:filter] = item.type_idea}, method: 'get' %></em></p>
+            <p><em><%= link_to "IDEA", {controller: 'idea_problems', action: 'index', filter: params[:filter] = item.type_idea}, method: 'get', class: 'clear-filter' %></em></p>
         <% else %>
-            <p><em><%= link_to "PROBLEM", {controller: 'idea_problems', action: 'index', filter: params[:filter] = item.type_idea}, method: 'get' %></em></p>
+            <p><em><%= link_to "PROBLEM", {controller: 'idea_problems', action: 'index', filter: params[:filter] = item.type_idea}, method: 'get', class: 'clear-filter' %></em></p>
         <% end %>
         <p>Erstelldatum: <%= item.created_at.strftime("%d.%m.%Y") %></p>
     </div>

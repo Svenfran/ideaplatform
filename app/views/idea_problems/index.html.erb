@@ -4,13 +4,13 @@
         <div class="wrapper">
             <div class="filter">
                 <div class="filter-links">
-                    <h4><%= link_to "IDEAS", {controller: 'idea_problems', action: 'index', filter: params[:filter] = true}, method: 'get'%></h4>
+                    <h4><%= link_to "IDEAS", {controller: 'idea_problems', action: 'index', filter: params[:filter] = true}, method: 'get', class: 'clear-filter' %></h4>
                     <p><small> (<%= @idea_problems.where(type_idea: true).count %>)</small></p>
                     <h4>&</h4> 
-                    <h4><%= link_to "PROBLEMS", {controller: 'idea_problems', action: 'index', filter: params[:filter] = false}, method: 'get' %></h4>
+                    <h4><%= link_to "PROBLEMS", {controller: 'idea_problems', action: 'index', filter: params[:filter] = false}, method: 'get', class: 'clear-filter' %></h4>
                     <p><small> (<%= @idea_problems.where(type_idea: false).count %>)</small></p>
                 </div>
-                <p class="clear-filter"><%= link_to "show all", idea_problems_path %></p>
+                <p class="clear-filter"><%= link_to "clear filter", idea_problems_path %></p>
             </div>
             <div class="idea-grid">
                 <% @idea_problems.each do |item| %>

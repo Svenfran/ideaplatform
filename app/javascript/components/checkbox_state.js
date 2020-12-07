@@ -29,9 +29,11 @@ const keepCheckedState = () => {
 }
 
 const clearLocalStorage = () => {
-    const clearFilter = document.querySelector('.clear-filter');
-    clearFilter.addEventListener('click', () => {
-        localStorage.clear();
+    const clearFilters = document.querySelectorAll('.clear-filter');
+    clearFilters.forEach((clearFilter) => {
+        clearFilter.addEventListener('click', () => {
+            localStorage.clear();
+        })
     })
 }
 

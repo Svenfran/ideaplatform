@@ -26,9 +26,9 @@
         <p>
         <% @idea_problem.categories.each_with_index do |c, i| %>
             <% if i == @idea_problem.categories.length - 1 %>
-                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get' %>
+                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get', class: 'clear-filter' %>
             <% else %>
-                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get' %> |  
+                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get', class: 'clear-filter' %> |  
             <% end %>
         <% end %>
         </p>
