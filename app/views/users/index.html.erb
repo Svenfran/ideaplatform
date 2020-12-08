@@ -1,7 +1,14 @@
 <div class="main-container">
     <div class="content cont">    
         
-        <h3 class="mb-3">My Ideas & Problems</h3>
+        <h3>My Ideas & Problems</h3>
+        <div class="plus-symbol">
+        <%= link_to new_idea_problem_path do %>
+            <i class="fas fa-plus-circle">
+                <span id="tooltip-text" style="white-space: nowrap;">Idee | Problem hinzufügen</span>
+            </i>
+        <% end %>
+        </div>
         <table class="table table-light">
             <thead>
                 <tr>
