@@ -23,9 +23,9 @@ end
 
 # USERS
 puts "Creating users..."
-user1 = User.create(email: "john@example.com", password: "password")
-user2 = User.create(email: "jeff@example.com", password: "password")
-user3 = User.create(email: "ben@example.com", password: "password")
+user1 = User.create(first_name: "john", last_name: "doe", email: "john@example.com", password: "password")
+user2 = User.create(first_name: "jeff", last_name: "bridges", email: "jeff@example.com", password: "password")
+user3 = User.create(first_name: "elon", last_name: "musk", email: "elmu@tesla.com", password: "password", company_name: "TESLA")
 user1.save
 user2.save
 user3.save
@@ -46,7 +46,7 @@ categories = Category.all
         description_long: idea_description,
         type_idea: idea_type.sample,
         status_open: open_status.sample,
-        user_id: [user1.id, user2.id].sample,
+        user_id: [user1.id, user2.id, user3.id].sample,
         category_ids: [categories[rand(0..categories.length - 1)].id, categories[rand(0..categories.length - 1)].id, categories[rand(0..categories.length - 1)].id, categories[rand(0..categories.length - 1)].id, categories[rand(0..categories.length - 1)].id]
     )
     idea.save

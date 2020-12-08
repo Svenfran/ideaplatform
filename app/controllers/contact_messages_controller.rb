@@ -7,7 +7,7 @@ class ContactMessagesController < ApplicationController
 
     def create
         @contact_message = ContactMessage.new(contact_params)
-        @contact_message.recipient_name = @idea_problem.user.email.split('@')[0]
+        @contact_message.recipient_name = @idea_problem.user.first_name
         @contact_message.recipient_email = @idea_problem.user.email
         @contact_message.recipient_idea_problem_title = @idea_problem.title
         @contact_message.recipient_idea_problem_id = @idea_problem.id

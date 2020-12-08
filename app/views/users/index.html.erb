@@ -1,0 +1,87 @@
+<div class="main-container">
+    <div class="content cont">    
+        
+        <h3 class="mb-3">My Ideas & Problems</h3>
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Titel</th>
+                    <th scope="col">Typ</th>
+                    <th scope="col" colspan="2">Aktion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @idea_problems.each_with_index do |item, i| %>
+                <tr>
+                    <th scope="row"><%= i + 1 %></th>
+                    <td>
+                    <div class="link-title">
+                        <%= link_to item.title, idea_problem_path(item) %>
+                    </div>
+                    </td>
+                    <td><%= item.type_idea ? "Idee" : "Problem" %></td>
+                    <td>
+                    <div class="link">
+                        <%= link_to edit_idea_problem_path(item) do %>
+                        <i class="fas fa-pen">
+                            <span id="tooltip-text">bearbeiten</span>
+                        </i>
+                        <% end %>
+                    </div>
+                    </td>
+                    <td>
+                    <div class="link">
+                        <%= link_to idea_problem_path(item), method: :delete, data: {confirm: "Delete #{item.title}?"}, class: 'clear-filter', remote: true do %>
+                        <i class="far fa-trash-alt">
+                            <span id="tooltip-text">löschen</span>
+                        </i>
+                        <% end %>
+                    </div>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+
+        <h3 class="my-5">My Messages</h3>
+        <table class="table table-light mb-5">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Betreff</th>
+                    <th scope="col">Empfänger</th>
+                    <th scope="col">Ideen | Problem Title</th>
+                    <th scope="col">Aktion</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @contact_messages.each_with_index do |message, i| %>
+                <tr>
+                    <th scope="row"><%= i + 1%></th>
+                    <td><%= message.sender_subject %></td>
+                    <td><%= message.recipient_name.capitalize %></td>
+                    <td>
+                    <div class="link-title">
+                        <%= link_to message.recipient_idea_problem_title, idea_problem_path(message.recipient_idea_problem_id) %></td>
+                    </div>
+                    <td>
+                    <div class="link">
+                        <%= link_to contact_message_path(message), method: :delete, data: {confirm: "Delete Message?"}, class: 'clear-filter', remote: true do %>
+                        <i class="far fa-trash-alt">
+                            <span id="tooltip-text">löschen</span>
+                        </i>
+                        <% end %>
+                    </div>
+                    </td>
+                </tr>
+                <% end %>
+            </tbody>
+        </table>
+
+
+        <div class="arrow-top">
+            <i class="fas fa-arrow-circle-up"></i>
+        </div>
+    </div>
+</div>

@@ -19,6 +19,14 @@
     color: #222;
 }
 
+.link-title a {
+    text-decoration: none;
+    color: #222;
+    &:hover {
+        color: #0091AD;
+    }
+}
+
 .symbols {
     display: flex;
     justify-content: space-between;

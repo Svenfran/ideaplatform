@@ -13,7 +13,7 @@
                 <p class="clear-filter"><%= link_to "clear filter", idea_problems_path %></p>
             </div>
             <div class="idea-grid">
-                <% @idea_problems.each do |item| %>
+                <% @idea_problems.order(created_at: :desc).each do |item| %>
                     <%= render "shared/card_overview", item: item %>
                 <% end %>
             </div>

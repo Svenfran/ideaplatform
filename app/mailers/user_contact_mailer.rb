@@ -6,7 +6,8 @@ class UserContactMailer < ApplicationMailer
   #   en.user_contact_mailer.notification.subject
   #
   def notification(contact_message)
-    @sender_name = contact_message.sender_email.split('@')[0]
+    # add sender_name to contact_messages tabel
+    @sender_name = contact_message.user.first_name
     @sender_email = contact_message.sender_email
     @sender_subject = contact_message.sender_subject
     @sender_message = contact_message.sender_message

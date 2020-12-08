@@ -53,12 +53,16 @@
         <p><strong>Bitte kontaktieren Sie den Ersteller für weitere Informationen!</strong></p>
     <% end %>
     <div class="info">
-        <p>Ersteller: <%= @idea_problem.user.email.split("@")[0] %></p>
+        <% if !@idea_problem.user.person_group_private && @idea_problem.user.company_name %>
+            <p>Ersteller: <%= @idea_problem.user.company_name %></p>
+        <% else %>
+            <p>Ersteller: <%= @idea_problem.user.first_name.capitalize %></p>
+        <% end %>
         <%#= mail_to @idea_problem.user.email, "Ersteller kontaktieren" %>
         <p><%= link_to "Ersteller kontaktieren", new_idea_problem_contact_message_path(@idea_problem) %></p>
         <p>Erstelldatum: <%= @idea_problem.created_at.strftime("%d.%m.%Y") %></p>
     </div>
-    <p style="color:lightslategray"><em>Privatperson</em></p>
+    <p style="color:lightslategray"><em><%= @idea_problem.user.person_group_private ? "Privatperson" : "Unternehmen"%></em></p>
     <p><%= link_to "<< BACK", idea_problems_path(@idea_problem, anchor: "item-#{@idea_problem.id}"), class: 'clear-filter' %></p>
     <%#= link_to "<< BACK", request.referer.present? ? request.referer : default_path %>
 <div>
