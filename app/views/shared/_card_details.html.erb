@@ -59,6 +59,6 @@
         <p>Erstelldatum: <%= @idea_problem.created_at.strftime("%d.%m.%Y") %></p>
     </div>
     <p style="color:lightslategray"><em>Privatperson</em></p>
-    <p><%= link_to "<< BACK", idea_problems_path(@idea_problem, anchor: "item-#{@idea_problem.id}") %></p>
+    <p><%= link_to "<< BACK", idea_problems_path(@idea_problem, anchor: "item-#{@idea_problem.id}"), class: 'clear-filter' %></p>
     <%#= link_to "<< BACK", request.referer.present? ? request.referer : default_path %>
 <div>

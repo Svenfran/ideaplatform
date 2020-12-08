@@ -18,7 +18,7 @@
     left: 330px;
     top: 100px;
     color: lightgray;
-    opacity: .8;
+    opacity: 1;
     z-index: 1;
     i {
         cursor: pointer;
@@ -49,6 +49,13 @@
 .cb > input {
     position: absolute;
     transform: scale(0);
+}
+
+.cat-filter {
+    background: #0091ad;
+    color: white;
+    border-radius: 3px;
+    padding: 0 5px;
 }
 
 // .cb-input + label {

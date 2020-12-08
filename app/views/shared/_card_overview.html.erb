@@ -7,7 +7,7 @@
                         <span id="tooltip-text">bearbeiten</span>
                     </i>
                 <% end %>
-                <%= link_to idea_problem_path(item), method: :delete, data: {confirm: "Delete #{item.title}?"}, remote: true do %>
+                <%= link_to idea_problem_path(item), method: :delete, data: {confirm: "Delete #{item.title}?"}, class: 'clear-filter', remote: true do %>
                     <i class="far fa-trash-alt">
                         <span id="tooltip-text">löschen</span>
                     </i>
@@ -33,9 +33,9 @@
         <p>
         <% item.categories.each_with_index do |c, i| %>
             <% if i == item.categories.length - 1 %>
-                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get', class: 'clear-filter' %>
+                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get', class: "cat cat-#{c.id} clear-filter" %>
             <% else %>
-                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get', class: 'clear-filter' %> | 
+                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get', class: "cat cat-#{c.id} clear-filter" %> | 
             <% end %>
         <% end %>
         </p>
@@ -49,3 +49,15 @@
         <p>Erstelldatum: <%= item.created_at.strftime("%d.%m.%Y") %></p>
     </div>
 </div>
+
+<!--
+<script>
+const cardCategories = document.querySelectorAll('.categories .cat');
+
+cardCategories.forEach((category) => {
+    category.addEventListener('click', () => {
+        category.classList.add('cat-filter');
+    })
+})
+</script>
+-->

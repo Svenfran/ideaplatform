@@ -17,10 +17,10 @@
             </span>
           <% end %>
           <div class="mt-3">
-            <%= f.button :submit, "Save", class: 'btn btn-dark mb-3'%>
+            <%= f.button :submit, "Save", class: 'btn btn-dark mb-3 clear-filter'%>
           </div>
         <% end %>
-        <%= link_to "<< Back", idea_problems_path %>
+        <%= link_to "<< Back", idea_problems_path, class: 'clear-filter' %>
       </div>
     </div>
   </div>
