@@ -58,8 +58,9 @@
         <% else %>
             <p>Ersteller: <%= @idea_problem.user.first_name.capitalize %></p>
         <% end %>
-        <%#= mail_to @idea_problem.user.email, "Ersteller kontaktieren" %>
-        <p><%= link_to "Ersteller kontaktieren", new_idea_problem_contact_message_path(@idea_problem) %></p>
+        <% unless @idea_problem.user == current_user %>
+            <p><%= link_to "Ersteller kontaktieren", new_idea_problem_contact_message_path(@idea_problem) %></p>
+        <% end %>
         <p>Erstelldatum: <%= @idea_problem.created_at.strftime("%d.%m.%Y") %></p>
     </div>
     <p style="color:lightslategray"><em><%= @idea_problem.user.person_group_private ? "Privatperson" : "Unternehmen"%></em></p>

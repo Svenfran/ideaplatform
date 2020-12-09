@@ -29,6 +29,14 @@
     bottom: 35px;
 }
 
+.fa-chevron-up:hover #tooltip-text {
+    display: block;
+}
+
+.fa-chevron-down:hover #tooltip-text {
+    display: block;
+}
+
 i {
     position: relative;
 }

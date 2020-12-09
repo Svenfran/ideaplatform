@@ -24,7 +24,7 @@
                     <th scope="row"><%= i + 1 %></th>
                     <td>
                     <div class="link-title">
-                        <%= link_to item.title, idea_problem_path(item) %>
+                        <%= link_to truncate(item.title, length: 80), idea_problem_path(item) %>
                     </div>
                     </td>
                     <td><%= item.type_idea ? "Idee" : "Problem" %></td>
@@ -59,7 +59,7 @@
                     <th scope="col">Betreff</th>
                     <th scope="col">Empfänger</th>
                     <th scope="col">Ideen | Problem Title</th>
-                    <th scope="col">Aktion</th>
+                    <th scope="col" colspan="2">Aktion</th>
                 </tr>
             </thead>
             <tbody>
@@ -70,8 +70,16 @@
                     <td><%= message.recipient_name.capitalize %></td>
                     <td>
                     <div class="link-title">
-                        <%= link_to message.recipient_idea_problem_title, idea_problem_path(message.recipient_idea_problem_id) %></td>
+                        <%= link_to truncate(message.recipient_idea_problem_title, length: 80), idea_problem_path(message.recipient_idea_problem_id) %></td>
                     </div>
+                    <td id="show-hide-arrow">
+                        <i class="fas fa-chevron-up hide">
+                            <span id="tooltip-text" style="white-space: nowrap;">Nachricht verbergen</span>
+                        </i>
+                        <i class="fas fa-chevron-down">
+                            <span id="tooltip-text" style="white-space: nowrap;">Nachricht anzeigen</span>
+                        </i>
+                    </td>
                     <td>
                     <div class="link">
                         <%= link_to contact_message_path(message), method: :delete, data: {confirm: "Delete Message?"}, class: 'clear-filter', remote: true do %>
@@ -81,14 +89,15 @@
                         <% end %>
                     </div>
                     </td>
+                    <% if message %>
+                    <tr id="message" class="message-hide">
+                        <th scope="row"></th>
+                        <td colspan="4"><em>Message:</em> <br> <%= word_wrap(message.sender_message, line_width: 10, break_sequence: "\n") %></td>
+                    </tr>
+                    <% end %>
                 </tr>
                 <% end %>
             </tbody>
         </table>
-
-
-        <div class="arrow-top">
-            <i class="fas fa-arrow-circle-up"></i>
-        </div>
     </div>
 </div>

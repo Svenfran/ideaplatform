@@ -14,7 +14,7 @@ class ContactMessagesController < ApplicationController
         @contact_message.user = current_user
         
         if @contact_message.save
-            UserContactMailer.notification(@contact_message).deliver_now
+            # UserContactMailer.notification(@contact_message).deliver_now
             redirect_to idea_problem_confirmation_path(@idea_problem, @contact_message)
         else
             render :new

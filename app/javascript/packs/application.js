@@ -28,6 +28,7 @@ import { clickArrow, scrollToTop } from "../components/top_scroll";
 import { toggleFilter } from "../components/toggle_filter";
 import { changeClass } from "../components/toggle_filter";
 import { keepCheckedState, clearLocalStorage } from "../components/checkbox_state";
+import { toggleMessage } from "../components/toggle_messages";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -35,6 +36,7 @@ import { keepCheckedState, clearLocalStorage } from "../components/checkbox_stat
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  toggleMessage();
   clearLocalStorage();
   keepCheckedState();
   changeClass();

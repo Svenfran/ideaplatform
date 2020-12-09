@@ -1,0 +1,19 @@
+.plus-symbol {
+    position: relative;
+    left: 50%;
+    top: 20px;
+    font-size: 30px;
+    a {
+        // color: #0091AD;
+        color: #222;
+        text-decoration: none;
+    }
+}
+
+.message-hide {
+    display: none; 
+}
+
+#show-hide-arrow {
+    cursor: pointer;
+}
