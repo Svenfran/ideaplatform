@@ -1,5 +1,6 @@
 class ContactMessagesController < ApplicationController
     before_action :set_idea_problem, only: [:new, :create, :confirmation]
+    before_action :set_contact_message, only: [:destroy]
 
     def new
         @contact_message = ContactMessage.new
@@ -23,10 +24,19 @@ class ContactMessagesController < ApplicationController
 
     def confirmation; end
 
+    def destroy
+        @contact_message.destroy
+        redirect_to users_path
+    end
+
     private
 
     def set_idea_problem
         @idea_problem = IdeaProblem.find(params[:idea_problem_id])
+    end
+
+    def set_contact_message
+        @contact_message = ContactMessage.find(params[:id])
     end
 
     def contact_params
