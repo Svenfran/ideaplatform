@@ -1,8 +1,9 @@
 .plus-symbol {
     position: relative;
+    width: max-content;
     left: 50%;
-    top: 20px;
-    font-size: 30px;
+    top: 18px;
+    // font-size: 30px;
     a {
         // color: #0091AD;
         color: #222;
@@ -16,4 +17,15 @@
 
 #show-hide-arrow {
     cursor: pointer;
+}
+
+.add {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #222;
+    border-radius: 50%;
 }

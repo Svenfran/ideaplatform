@@ -4,9 +4,13 @@
         <h3>My Ideas & Problems</h3>
         <div class="plus-symbol">
         <%= link_to new_idea_problem_path do %>
-            <i class="fas fa-plus-circle">
-                <span id="tooltip-text" style="white-space: nowrap;">Idee | Problem hinzufügen</span>
-            </i>
+            <%# <i class="fas fa-plus-circle"> %>
+                <div class="add">
+                    <i class="fas fa-plus">
+                        <span id="tooltip-text" style="white-space: nowrap;">Idee | Problem hinzufügen</span>
+                    </i>
+                </div>
+            <%# </i> %>
         <% end %>
         </div>
         <table class="table table-light">
@@ -40,6 +44,7 @@
                     <td>
                     <div class="link">
                         <%= link_to idea_problem_path(item), method: :delete, data: {confirm: "Delete #{item.title}?"}, class: 'clear-filter', remote: true do %>
+                        <%# <i class="fas fa-times"></i> %>
                         <i class="far fa-trash-alt">
                             <span id="tooltip-text">löschen</span>
                         </i>
@@ -67,7 +72,12 @@
                 <tr>
                     <th scope="row"><%= i + 1%></th>
                     <td><%= message.sender_subject %></td>
-                    <td><%= message.recipient_name.capitalize %></td>
+
+                    <% if IdeaProblem.find(message.recipient_idea_problem_id).user.company_name != "" %>
+                        <td><%= IdeaProblem.find(message.recipient_idea_problem_id).user.company_name %></td>
+                    <% else %>
+                        <td><%= IdeaProblem.find(message.recipient_idea_problem_id).user.first_name.capitalize %></td>
+                    <% end %>
                     <td>
                     <div class="link-title">
                         <%= link_to truncate(message.recipient_idea_problem_title, length: 80), idea_problem_path(message.recipient_idea_problem_id) %></td>
@@ -92,7 +102,7 @@
                     <% if message %>
                     <tr id="message" class="message-hide">
                         <th scope="row"></th>
-                        <td colspan="4"><em>Message:</em> <br> <%= word_wrap(message.sender_message, line_width: 10, break_sequence: "\n") %></td>
+                        <td colspan="4" style="width: min-content" class="text-justify"><em>Message:</em> <br> <%= message.sender_message %></td>
                     </tr>
                     <% end %>
                 </tr>
