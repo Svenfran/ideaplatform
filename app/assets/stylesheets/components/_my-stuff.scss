@@ -2,8 +2,7 @@
     position: relative;
     width: max-content;
     left: 50%;
-    top: 18px;
-    // font-size: 30px;
+    top: 15px;
     a {
         // color: #0091AD;
         color: #222;
@@ -29,3 +28,9 @@
     border: 2px solid #222;
     border-radius: 50%;
 }
+
+
+.table {
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+// #282d37

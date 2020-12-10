@@ -4,13 +4,11 @@
         <h3>My Ideas & Problems</h3>
         <div class="plus-symbol">
         <%= link_to new_idea_problem_path do %>
-            <%# <i class="fas fa-plus-circle"> %>
-                <div class="add">
-                    <i class="fas fa-plus">
-                        <span id="tooltip-text" style="white-space: nowrap;">Idee | Problem hinzufügen</span>
-                    </i>
-                </div>
-            <%# </i> %>
+            <div class="add">
+                <i class="fas fa-plus">
+                    <span id="tooltip-text" style="white-space: nowrap;">Idee | Problem hinzufügen</span>
+                </i>
+            </div>
         <% end %>
         </div>
         <table class="table table-light">
@@ -71,7 +69,7 @@
                 <% @contact_messages.each_with_index do |message, i| %>
                 <tr>
                     <th scope="row"><%= i + 1%></th>
-                    <td><%= message.sender_subject %></td>
+                    <td style="width: 200px"><%= message.sender_subject %></td>
 
                     <% if IdeaProblem.find(message.recipient_idea_problem_id).user.company_name != "" %>
                         <td><%= IdeaProblem.find(message.recipient_idea_problem_id).user.company_name %></td>
