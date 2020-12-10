@@ -59,7 +59,7 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Betreff</th>
+                    <th scope="col">Datum</th>
                     <th scope="col">Empfänger</th>
                     <th scope="col">Ideen | Problem Title</th>
                     <th scope="col" colspan="2">Aktion</th>
@@ -69,7 +69,7 @@
                 <% @contact_messages.each_with_index do |message, i| %>
                 <tr>
                     <th scope="row"><%= i + 1%></th>
-                    <td style="width: 200px"><%= message.sender_subject %></td>
+                    <td><%= message.created_at.strftime("%d.%m.%Y") %></td>
 
                     <% if IdeaProblem.find(message.recipient_idea_problem_id).user.company_name != "" %>
                         <td><%= IdeaProblem.find(message.recipient_idea_problem_id).user.company_name %></td>
