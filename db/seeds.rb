@@ -14,7 +14,7 @@ Category.destroy_all
 
 # CATEGORIES
 puts "Creating categories..."
-category_list = ["E-Mobilität", "Gesundheitswesen", "Automotive", "Computerwissenschaften", "Umwelt", "Ecommerce", "BEV", "Verkehrstechnik", "Schienenverkehr", "Sonstige", "Kunst", "Kultur"]
+category_list = ["E-Mobilität", "Gesundheitswesen", "Automotive", "Computerwissenschaften", "Umwelt", "Ecommerce", "BEV", "Verkehrstechnik", "Schienenverkehr", "Sonstige", "Kunst", "Kultur", "Musik", "Sport", "Architektur", "Ernährung", "Reisen", "Chemie", "Maschinenbau", "Elektrotechnik", "Ingenieurswesen"]
 
 category_list.each do |c|
     category = Category.create(name: c)

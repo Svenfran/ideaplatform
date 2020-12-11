@@ -33,14 +33,16 @@
                 </div>
                 <hr>
                 <p><strong>Kategorien:</strong></p>
+                <div class="filter-categories">
                 <% Category.all.sort_by(&:name).each do |cat| %>
                     <label class="cb">
                         <%= check_box_tag "filter[]", cat.name, false, {multiple: true} %>
                         <%= cat.name %> <%#= IdeaProblemCategory.where(category_id: cat.id).count %>
                     </label>
                 <% end %>
+                </div>
             </div>
-            <%= submit_tag "Filter", class: "btn btn-outline-dark btn-sm mt-3" %>
+            <%= submit_tag "Filter", class: "btn btn-outline-dark btn-sm my-3" %>
         <% end %>
     </div>
 </div>

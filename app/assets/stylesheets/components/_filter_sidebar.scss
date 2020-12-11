@@ -58,6 +58,13 @@
     padding: 0 5px;
 }
 
+.filter-categories {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    overflow-y: scroll;
+
+}
 // .cb-input + label {
 //     cursor: pointer;
 //     border: 1px solid #0091AD;
