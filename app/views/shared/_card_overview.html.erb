@@ -36,9 +36,9 @@
         <p>
         <% item.categories.each_with_index do |c, i| %>
             <% if i == item.categories.length - 1 %>
-                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get', class: "cat cat-#{c.id} clear-filter" %>
+                <%= link_to c.name, {controller: 'idea_problems', action: 'index', filter: params[:filter] = c.name}, method: 'get', class: "cat cat-#{c.id} clear-filter" %>
             <% else %>
-                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get', class: "cat cat-#{c.id} clear-filter" %> | 
+                <%= link_to c.name, {controller: 'idea_problems', action: 'index', filter: params[:filter] = c.name}, method: 'get', class: "cat cat-#{c.id} clear-filter" %> | 
             <% end %>
         <% end %>
         </p>

@@ -26,9 +26,9 @@
         <p>
         <% @idea_problem.categories.each_with_index do |c, i| %>
             <% if i == @idea_problem.categories.length - 1 %>
-                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get', class: 'clear-filter' %>
+                <%= link_to c.name, {controller: 'idea_problems', action: 'index', filter: params[:filter] = c.name}, method: 'get', class: 'clear-filter' %>
             <% else %>
-                <%= link_to c.name, {controller: 'idea_problems', action: 'index', query: params[:query] = c.name}, method: 'get', class: 'clear-filter' %> |  
+                <%= link_to c.name, {controller: 'idea_problems', action: 'index', filter: params[:filter] = c.name}, method: 'get', class: 'clear-filter' %> |  
             <% end %>
         <% end %>
         </p>
@@ -81,7 +81,7 @@
         <p><strong>Bitte kontaktieren Sie den Ersteller für weitere Informationen!</strong></p>
     <% end %>
     <div class="info">
-        <% if !@idea_problem.user.person_group_private && @idea_problem.user.company_name %>
+        <% if !@idea_problem.user.person_group_private && @idea_problem.user.company_name != "" %>
             <p>Ersteller: <%= @idea_problem.user.company_name %></p>
         <% else %>
             <p>Ersteller: <%= @idea_problem.user.first_name.capitalize %></p>
