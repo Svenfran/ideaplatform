@@ -1,6 +1,5 @@
 class IdeaProblem < ApplicationRecord
   belongs_to :user
-  # has_many :contact_messages
   has_many :idea_problem_categories, dependent: :destroy
   has_many :categories, through: :idea_problem_categories
   has_many_attached :documents

@@ -1,6 +1,7 @@
 class IdeaProblemsController < ApplicationController
     skip_before_action :authenticate_user!, only: [ :index ]
-    before_action :set_idea_problem, only: %i[show edit update destroy]
+    before_action :set_idea_problem, only: %i[show edit update destroy create_attachment]
+    before_action :set_idea_problem_attachment, only: %i[delete_attachment]
 
     def index
         if params[:filter].present?
@@ -62,14 +63,36 @@ class IdeaProblemsController < ApplicationController
         redirect_to idea_problems_path
     end
 
+    # handle attachments
+    
+    def create_attachment
+        documents = params[:documents]
+        if documents
+            documents.each do |document|
+                @idea_problem.documents.attach(document)
+            end
+        end
+        redirect_to idea_problem_path(@idea_problem)
+    end
+
+    def delete_attachment
+        @document = ActiveStorage::Attachment.find(params[:id])
+        @document.purge
+        redirect_to idea_problem_path(@idea_problem)
+    end
+
     private
 
     def set_idea_problem
         @idea_problem = IdeaProblem.find(params[:id])
     end
+    
+    def set_idea_problem_attachment
+        @idea_problem = ActiveStorage::Attachment.find(params[:id]).record_id
+    end
 
     def idea_problem_params
         params.require(:idea_problem).permit(:title, :description_long, :type_idea, :status_open, category_ids: [], documents: [])
     end
-
+    
 end

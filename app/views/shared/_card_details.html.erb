@@ -34,17 +34,45 @@
         </p>
     </div>
     <h5>Beschreibung:</h5>
-    <% if @idea_problem.status_open %>
+    <% if @idea_problem.status_open || @idea_problem.user == current_user%>
         <p class="text-justify"><%= @idea_problem.description_long %></p>
         <h5>Anhänge:</h5>
+        <% if @idea_problem.user == current_user %>
+            <div class="add-attachments" style="font-size: small">
+                <%= form_tag({action: :create_attachment}, multipart: true) do %>
+                    <div class="d-flex align-items-sm-center my-3">
+                        <%= file_field_tag 'documents[]', multiple: true %>
+                        <%= submit_tag "add files", class: "btn-add-file ml-1" %>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
         <div class="attachments">
             <p>
             <% @idea_problem.documents.each_with_index do |document, i| %>
-                <% if i == @idea_problem.documents.length - 1 %>
+                <%# if @idea_problem.documents.attached? %>
+                <% unless i == @idea_problem.documents.length - 1 %>
                     <%= link_to document.filename, rails_blob_path(document, disposition: "attachment"), target: "_blank" %>
-                    <%#= link_to "X", rails_blob_path(document), method: :delete, data: {confirm: "Delete attachment?"} %>
+                    <%#= link_to "X", {controller: 'idea_problems', action: 'delete_attachment', id: document}, method: :delete, data: { confirm: "Delete #{document.filename}?" }, remote: true %>
+                    <% if @idea_problem.user == current_user %>
+                        <%= link_to delete_attachment_idea_problem_path(document), method: :delete, data: { confirm: "Delete #{document.filename}?" }, remote: true do %>
+                            <i class="fas fa-times">
+                                <span id="tooltip-text">löschen</span>
+                            </i>
+                        <% end %> &nbsp|&nbsp 
+                    <% else %>
+                        &nbsp|&nbsp
+                    <% end %>
                 <% else %> 
-                    <%= link_to document.filename, rails_blob_path(document, disposition: "attachment"), target: "_blank" %> | 
+                    <%= link_to document.filename, rails_blob_path(document, disposition: "attachment"), target: "_blank" %>
+                    <%#= link_to "X", {controller: 'idea_problems', action: 'delete_attachment', id: document}, method: :delete, data: { confirm: "Delete #{document.filename}?" }, remote: true %>
+                    <% if @idea_problem.user == current_user %>
+                        <%= link_to  delete_attachment_idea_problem_path(document), method: :delete, data: { confirm: "Delete #{document.filename}?" }, remote: true do %>
+                            <i class="fas fa-times">
+                                <span id="tooltip-text">löschen</span>
+                            </i>
+                        <% end %>
+                    <% end %>
                 <% end %>
             <% end %>
             </p>
@@ -67,3 +95,4 @@
     <p><%= link_to "<< BACK", idea_problems_path(@idea_problem, anchor: "item-#{@idea_problem.id}"), class: 'clear-filter' %></p>
     <%#= link_to "<< BACK", request.referer.present? ? request.referer : default_path %>
 <div>
+
