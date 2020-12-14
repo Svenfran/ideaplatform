@@ -1,7 +1,7 @@
 <div class="main-container">
     <div class="content cont">    
         
-        <h3>My Ideas & Problems</h3>
+        <h4>My Ideas <small>(<%= @idea_problems.where(type_idea: true).count %>)</small> & Problems <small>(<%= @idea_problems.where(type_idea: false).count %>)</small> </h4>
         <div class="plus-symbol">
         <%= link_to new_idea_problem_path do %>
             <div class="add">
@@ -11,7 +11,7 @@
             </div>
         <% end %>
         </div>
-        <table class="table table-light">
+        <table class="table table-light" style="font-size: small">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -60,8 +60,8 @@
             </tbody>
         </table>
 
-        <h3 class="my-5">My Messages</h3>
-        <table class="table table-light mb-5">
+        <h4 class="my-5">My Messages <small>(<%= @contact_messages.count %>)</small></h4>
+        <table class="table table-light mb-5" style="font-size: small">
             <thead>
                 <tr>
                     <th scope="col">#</th>

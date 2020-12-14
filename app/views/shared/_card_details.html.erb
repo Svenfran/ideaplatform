@@ -55,7 +55,6 @@
                 <% @idea_problem.documents.each_with_index do |document, i| %>
                     <% unless i == @idea_problem.documents.length - 1 %>
                         <%= link_to document.filename, rails_blob_path(document, disposition: "attachment"), target: "_blank" %>&nbsp
-                        <%#= link_to "X", {controller: 'idea_problems', action: 'delete_attachment', id: document}, method: :delete, data: { confirm: "Delete #{document.filename}?" }, remote: true %>
                         <% if @idea_problem.user == current_user %>
                             <%= link_to delete_attachment_idea_problem_path(document), method: :delete, data: { confirm: "Delete #{document.filename}?" }, remote: true do %>
                                 <i class="fas fa-times">
@@ -67,9 +66,8 @@
                         <% end %>
                     <% else %> 
                         <%= link_to document.filename, rails_blob_path(document, disposition: "attachment"), target: "_blank" %>&nbsp
-                        <%#= link_to "X", {controller: 'idea_problems', action: 'delete_attachment', id: document}, method: :delete, data: { confirm: "Delete #{document.filename}?" }, remote: true %>
                         <% if @idea_problem.user == current_user %>
-                            <%= link_to  delete_attachment_idea_problem_path(document), method: :delete, data: { confirm: "Delete #{document.filename}?" }, remote: true do %>
+                            <%= link_to delete_attachment_idea_problem_path(document), method: :delete, data: { confirm: "Delete #{document.filename}?" }, remote: true do %>
                                 <i class="fas fa-times">
                                     <span id="tooltip-text">löschen</span>
                                 </i>
