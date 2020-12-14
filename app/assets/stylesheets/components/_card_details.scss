@@ -27,11 +27,21 @@
 }
 
 .btn-add-file {
-    border: 1px solid #222;
+    border: 1px solid darkgray;
     color: #222;
     background-color: white;
     padding: 0 8px;
     border-radius: 3px;
     font-size: small;
     font-weight: normal;
+    margin-left: 1rem;
+}
+
+.file-label {
+    background-color: #f6ae2d;
+    color: white;
+    padding: 0 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 0 1rem 0 0;
 }

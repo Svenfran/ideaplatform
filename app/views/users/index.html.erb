@@ -17,6 +17,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Titel</th>
                     <th scope="col">Typ</th>
+                    <th scope="col">Status</th>
                     <th scope="col" colspan="2">Aktion</th>
                 </tr>
             </thead>
@@ -30,6 +31,11 @@
                     </div>
                     </td>
                     <td><%= item.type_idea ? "Idee" : "Problem" %></td>
+                    <td class="text-center">
+                        <% if !item.status_open %>
+                            <i class="fas fa-lock"></i>
+                        <% end %>
+                    </td>
                     <td>
                     <div class="link">
                         <%= link_to edit_idea_problem_path(item) do %>

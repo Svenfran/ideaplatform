@@ -29,6 +29,7 @@ import { toggleFilter } from "../components/toggle_filter";
 import { changeClass } from "../components/toggle_filter";
 import { keepCheckedState, clearLocalStorage } from "../components/checkbox_state";
 import { toggleMessage } from "../components/toggle_messages";
+import { selectedFiles } from "../components/show_selected_files";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -43,4 +44,5 @@ document.addEventListener('turbolinks:load', () => {
   toggleFilter();
   scrollToTop();
   clickArrow();
+  // selectedFiles();
 });
