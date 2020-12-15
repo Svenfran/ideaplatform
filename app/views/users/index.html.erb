@@ -76,16 +76,24 @@
                 <tr>
                     <th scope="row"><%= i + 1%></th>
                     <td><%= message.created_at.strftime("%d.%m.%Y") %></td>
-
-                    <% if !IdeaProblem.find(message.recipient_idea_problem_id).user.person_group_private && IdeaProblem.find(message.recipient_idea_problem_id).user.company_name != "" %>
-                        <td><%= IdeaProblem.find(message.recipient_idea_problem_id).user.company_name %></td>
+                    <% if IdeaProblem.find_by_id(message.recipient_idea_problem_id).present? %>
+                        <% if !IdeaProblem.find(message.recipient_idea_problem_id).user.person_group_private && IdeaProblem.find(message.recipient_idea_problem_id).user.company_name != "" %>
+                            <td><%= IdeaProblem.find(message.recipient_idea_problem_id).user.company_name %></td>
+                        <% else %>
+                            <td><%= IdeaProblem.find(message.recipient_idea_problem_id).user.first_name.capitalize %></td>
+                        <% end %>
                     <% else %>
-                        <td><%= IdeaProblem.find(message.recipient_idea_problem_id).user.first_name.capitalize %></td>
+                        <td>---</td>
                     <% end %>
+                    <% if IdeaProblem.find_by_id(message.recipient_idea_problem_id).present? %>
                     <td>
-                    <div class="link-title">
-                        <%= link_to truncate(message.recipient_idea_problem_title, length: 80), idea_problem_path(message.recipient_idea_problem_id) %></td>
-                    </div>
+                        <div class="link-title">
+                            <%= link_to truncate(message.recipient_idea_problem_title, length: 80), idea_problem_path(message.recipient_idea_problem_id) %>
+                        </div>
+                    </td>
+                    <% else %>
+                        <td><%= ("Idea | Problem has been removed by the owner!").upcase %></td>
+                    <% end %>
                     <td id="show-hide-arrow">
                         <i class="fas fa-chevron-up hide">
                             <span id="tooltip-text" style="white-space: nowrap;">Nachricht verbergen</span>
